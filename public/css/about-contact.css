@@ -1,0 +1,129 @@
+.navdiv{
+  margin-bottom: 5%;
+}
+
+.top-section{
+position: relative;
+margin-top: 5vw;
+padding: 5vw;
+
+}
+p{
+  font-size: 1.5rem;
+}
+
+.content-top{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.img-about-us{
+  border-radius: 300%;
+
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid{
+
+  padding-top: 5%;
+}
+.bottom-section{
+  padding-bottom: 60px;
+}
+
+
+/*Profile card */
+.card-img-block{
+    float:left;
+    width:100%;
+    height:150px;
+    overflow:hidden;
+}
+.card-body{
+    position:relative;
+}
+.profile {
+  border-radius: 50%;
+  position: absolute;
+  top: -42px;
+  left: 15%;
+  max-width: 75px;
+  border: 3px solid rgba(255, 255, 255, 1);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
+h5{
+    font-weight:600;
+    color: #209CEE;
+}
+.card-text{
+    font-weight:300;
+    font-size:15px;
+}
+.icon-block{
+    float:left;
+    width:100%;
+}
+.icon-block a{
+    text-decoration:none;
+}
+.profile-card i {
+  display: inline-block;
+    font-size: 16px;
+    color: #209CEE;
+    text-align: center;
+    border: 1px solid #209CEE;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    margin:0 5px;
+}
+.profile-card i:hover {
+  background-color: #209CEE;
+  color:#fff;
+}
+
+@media (max-width: 620px){
+  .content-top{
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+  .mid-left{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    padding-bottom: 0;
+  }
+
+  .mid-right{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    padding-top: 0;
+  }
+
+}
+
+
+/* Contact us page */
+
+
+.mid-section{
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.mid-left{
+  padding: 13% 5% 5%
+}
+
+.mid-right{
+padding: 13% 5% 5%;
+}
+
+.contact-us-img{
+    width: 100%;
+    height: 100%;
+}
