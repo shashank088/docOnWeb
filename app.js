@@ -8,7 +8,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate');
 const doctorSchema = require("./model/doctorSchema");
-// const patientSchema = require("./model/patientSchema");
+const patientSchema = require("./model/patientSchema");
 // const noteSchema = require("./model/noteSchema");
 
 const app = express();
@@ -32,12 +32,12 @@ mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, use
 // plugins
 doctorSchema.plugin(passportLocalMongoose,{usernameField: "email"});
 doctorSchema.plugin(findOrCreate);
-// patientSchema.plugin(passportLocalMongoose);
-// patientSchema.plugin(findOrCreate);
+patientSchema.plugin(passportLocalMongoose,{usernameField: "email"});
+patientSchema.plugin(findOrCreate);
 
 // creating models based on schemas
 const Doctor = new mongoose.model("Doctor", doctorSchema);
-// const Patient = new mongoose.model("Patient", patientSchema);
+const Patient = new mongoose.model("Patient", patientSchema);
 
 passport.use(Doctor.createStrategy());
 passport.serializeUser(function(doctor, done) {
@@ -49,15 +49,15 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// passport.use(Patient.createStrategy());
-// passport.serializeUser(function(patient, done) {
-//   done(null, doctor.id);
-// });
-// passport.deserializeUser(function(id, done) {
-//   Patient.findById(id, function(err, patient) {
-//     done(err, patient);
-//   });
-// });
+passport.use(Patient.createStrategy());
+passport.serializeUser(function(patient, done) {
+  done(null, patient.id);
+});
+passport.deserializeUser(function(id, done) {
+  Patient.findById(id, function(err, patient) {
+    done(err, patient);
+  });
+});
 
 
 
@@ -77,21 +77,29 @@ app.get("/contact-us",function(req,res){
   res.render("contact-us");
 });
 
-app.get("/login",function(req,res){
-  res.render("login");
+app.get("/loginDoctor",function(req,res){
+  res.render("loginDoctor");
+});
+app.get("/loginPatient",function(req,res){
+  res.render("loginPatient");
 });
 
-app.get("/signup",function(req,res){
-  res.render("signup");
+app.get("/signupDoctor",function(req,res){
+  res.render("signupDoctor");
+});
+app.get("/signupPatient",function(req,res){
+  res.render("signupPatient");
 });
 
 app.get("/findDoc",function(req,res){
+
   res.render("findDoc");
+
 });
 
 
 
-app.post("/signup",function(req,res){
+app.post("/signupDoctor",function(req,res){
     const emailaddress = req.body.email;
     const user = new Doctor({
       email:emailaddress
@@ -99,20 +107,35 @@ app.post("/signup",function(req,res){
     Doctor.register({email: req.body.email}, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            res.redirect("/signup");
+            res.redirect("/signupDoctor");
         }
         else{
             passport.authenticate("local")(req, res, function(){
-                res.redirect("/login");
+                res.redirect("/loginDoctor");
             });
         };
     });
 });
 
-app.post("/login", function(req, res){
+app.post("/signupPatient",function(req,res){
+    const emailaddress = req.body.email;
+    const user = new Patient({
+      email:emailaddress
+    });
+    Patient.register({email: req.body.email}, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            res.redirect("/signupPatient");
+        }
+        else{
+            passport.authenticate("local")(req, res, function(){
+                res.redirect("/loginPatient");
+            });
+        };
+    });
+});
 
-  console.log("coming to post req login");
-
+app.post("/loginDoctor", function(req, res){
   const user = new Doctor({
     email: req.body.email,
     password: req.body.password
@@ -126,7 +149,22 @@ app.post("/login", function(req, res){
       });
     }
   });
+});
 
+app.post("/loginPatient", function(req, res){
+  const user = new Patient({
+    email: req.body.email,
+    password: req.body.password
+  });
+  req.login(user, function(err){
+    if (err) {
+      console.log(err);
+    } else {
+      passport.authenticate("local")(req, res, function(){
+      res.redirect("/findDoc");
+      });
+    }
+  });
 });
 
 
