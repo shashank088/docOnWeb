@@ -1,41 +1,37 @@
 const mongoose = require("mongoose");
 
-const medic_his = {
-  doctor_hospital_id: string,
+const medic_his = new mongoose.Schema({
+  doctor_hospital_id: String,
   documents: {data: Buffer, contentType: String}
-};
+});
 
-const vits = {
-  bp: [{
-    reading: Number,
-    date: Date
-  }],
+const vits = new mongoose.Schema({
+  bp: [{reading: Number,date: Date}],
+  sugar: [{reading: Number,date: Date}],
+  weight: [{reading: Number,date: Date}]
+});
 
-  sugar: [{
-    reading: Number,
-    date: Date
-  }],
+const slot = new mongoose.Schema({
+  time: Number,
+  date: String
+});
 
-  weight: [{
-    reading: Number,
-    date: Date
-  }]
-};
+const patientAppointment = new mongoose.Schema({
+  doctor_id: String,
+  time_slot: [slot],
+  visit_type: String,
+});
 
-const patientAppointment = {
-  doctor_id: string,
-  time_slot: Number,
-  visit_type: string,
-};
-
-const patientSchema = {
+const patientSchema = new mongoose.Schema({
   profileImg: {data: Buffer, contentType: String},
-  email: string,
+  email: String,
+  password: String,
   phone: Number,
-  name: string,
+  name: String,
   appointments: [patientAppointment],
   medical_history: [medic_his],
   vitals: [vits]
-};
+});
 
-module.exports = mongoose.model("patient", patientSchema)
+// module.exports = mongoose.model("patient", patientSchema)
+module.exports = patientSchema;
