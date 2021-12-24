@@ -30,6 +30,31 @@ body {
   margin-right: 1rem;
 }
 
+
+/*class for findDoc and dashboard-doctor  */
+
+.space {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.box {
+  max-width: 400px;
+  margin: 30px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+  background-color: #209CEE;
+  text-align: center;
+}
+
+
+
 /* class for main page content */
 #first{
   position: relative;
