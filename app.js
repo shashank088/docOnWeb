@@ -92,10 +92,27 @@ app.get("/signupPatient",function(req,res){
 });
 
 app.get("/findDoc",function(req,res){
-
   res.render("findDoc");
-
 });
+
+app.get("/dashboardDoc",function(req,res){
+  res.render("dashboardDoc");
+});
+
+app.get("/bookAppointment",function(req,res){
+  res.render("bookAppointment");
+});
+
+app.get("/readMoreDoctor",function(req,res){
+  res.render("readMoreDoctor");
+});
+
+app.get("/readMorePatient",function(req,res){
+  res.render("readMorePatient");
+});
+
+
+
 
 
 
