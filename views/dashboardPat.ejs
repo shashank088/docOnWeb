@@ -15,9 +15,9 @@
 
 
     <div style="margin-left: 20px;">
-      <h2 class="sub-title">Name: Shashank Pandey <br>
+      <h2 class="sub-title">Name: <%=users.profilep.name%> <br>
       </h2>
-      <span>Email: abc@gmail.com <br>
+      <span>Email: <%= users.username%> <br>
       </span>
     </div>
     <div style="margin-top: 5%;">
@@ -45,8 +45,8 @@
       <p>Doctor Name: <%= appointment.doctor_name %> <br>
         Profession: <%= appointment.doctor_profession %> <br>
         Appointment Type: <%= appointment.visit_type %> <br>
-        Date: dd/mm/yyyy<br>
-        Time: 18:00 <br></p><br>
+        Date: <%= appointment.date %><br>
+        Time: <%= appointment.time %> <br></p><br>
         <form class="" action="/postPatReadmore" method="post">
           <button name="viewmore" class="btn btn-link" value=<%= appointment.doctor_id %> >View More</button>
         </form>

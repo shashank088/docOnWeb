@@ -5,7 +5,7 @@
 
 
 <script>
-  const patient_id = <%= pat._id%> 
+  const patient_id = <%= pat._id%>
   const doctor_id = <%= doc._id %>
 </script>
 
@@ -21,11 +21,10 @@
   <div class="card-body">
     <div class="left-alignment sub-title">
       <p>Patient Name: <%=appointment.patient_name%> <br> <br>
-        Patient Time Slot: 18:30 <br> <br>
-        Date: dd/mm/yyyy<br> <br>
         Mode: <%=appointment.visit_type%> <br> <br>
         Symptoms: <%=appointment.symptoms%> <br> <br>
-        Documents Uploaded: kiye hai kuchh <br> <br></p>
+        Date:  <%=appointment.date%><br> <br>
+        Time:<%=appointment.time%><br> <br></p>
 
         <form class="" action="/readMoreDoctor/submitNotes" method="post">
           <label for="">Write Notes:</label>
@@ -47,9 +46,9 @@
     <div class="bookapp sub-title">
       <form class="" action="/vitals-bp" method="post">
         <label for="bpdate">Choose date for BP:&nbsp&nbsp&nbsp</label>
-        <input type="date" name="bpdate" ><br>
+        <input type="date" name="bpdate" ><br><br>
         <label for="bpdate">Write reading for BP:&nbsp</label>
-        <input type="text" name="bpreading" placeholder="Reading"><br>
+        <input type="text" name="bpreading" placeholder="Reading"><br><br>
         <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >Submit BP reading</button>
       </form>
     </div>
@@ -62,9 +61,9 @@
     <div class="bookapp sub-title">
       <form class="" action="/vitals-sugar" method="post">
         <label for="sugardate">Choose date for sugar:&nbsp&nbsp&nbsp</label>
-        <input type="date" name="sugardate" ><br>
+        <input type="date" name="sugardate" ><br><br>
         <label for="sugarpdate">Write reading for sugar:&nbsp</label>
-        <input type="text" name="sugarreading" placeholder="Reading"><br>
+        <input type="text" name="sugarreading" placeholder="Reading"><br><br>
         <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >Submit sugar reading</button>
       </form>
     </div>
@@ -74,13 +73,15 @@
 
 
 
-<!-- documents view and upload --> 
-
+<!-- documents view and upload -->
+<div class="card rounded box">
+  <div class="card-body">
+    <div class="bookapp sub-title">
 
 <form class="" action="/viewDocsDoctor" method="post">
     <button class="btn btn-success" type="submit" name="pat_id" value=<%= pat._id%>%>>View and upload Reports</button>
 </form>
-<br><br>
+<br>
 
 <!-- Text Chat and video chat -->
 
@@ -88,8 +89,10 @@
 <form class="" action="/chatDoctor" method="post">
     <button class="btn btn-success" type="submit" name="pat_id" value=<%=pat._id%> >Text or Video Chat</button>
 </form>
-<br><br>
 
+</div>
+</div>
+</div>
 
 
 <!-- Graph -->

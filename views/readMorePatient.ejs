@@ -7,7 +7,7 @@
 
 
 <script>
-  const patient_id = <%= pat._id%> 
+  const patient_id = <%= pat._id%>
   const doctor_id = <%= doc._id %>
 </script>
   <!-- middle wrapper start -->
@@ -23,11 +23,10 @@
     <div class="card-body">
         <div class="left-alignment sub-title">
             <p>Doctor Name: <%= doc.profiled.name %> <br> <br>
-               Time Slot: 18:30 <br> <br>
-               Date: dd/mm/yyyy<br> <br>
+               Time Slot: <%= appointment.time %> <br> <br>
+               Date: <%= appointment.date %><br> <br>
                Mode: <%= appointment.visit_type %> <br> <br>
                Symptoms: <%= appointment.symptoms %> <br> <br>
-               Documents Uploaded: kiye hai kuchh <br> <br>
             </p>
 
 
@@ -39,7 +38,7 @@
 
 
 
-<!-- documents view and upload --> 
+<!-- documents view and upload -->
 
 
 <form class="" action="/viewDocsPatient" method="post">

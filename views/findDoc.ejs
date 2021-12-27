@@ -4,19 +4,20 @@
 <section class="footer-spacing">
   <div class="container">
     <div class="mt-5 mb-3">
-      <button class="btn btn-primary mx-4">Neurologist</button>
-      <button class="btn btn-primary mx-4">Cardiologist</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
+
+      <a href="/Neurologist"><button class="btn btn-primary mx-4">Neurologist</button></a>
+      <a href="/Cardiologist"><button class="btn btn-primary mx-4">Cardiologist</button></a>
+      <a href="/Dermatologist"><button class="btn btn-primary mx-4">Dermatologist</button></a>
+      <a href="/Dentist"><button class="btn btn-primary mx-4">Dentist</button></a>
+      <a href="/Pediatricians"><button class="btn btn-primary mx-4">Pediatricians</button></a>
+      <a href="/Gynecologist"><button class="btn btn-primary mx-4">Gynecologist</button></a>
     </div>
     <div class="mt-5 mb-4">
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
-      <button class="btn btn-primary mx-4">VOID</button>
+      <a href="/GeneralPhysician"><button class="btn btn-primary mx-4">General Physician</button></a>
+      <a href="/Dermatologist"><button class="btn btn-primary mx-4">Dermatologist</button></a>
+      <a href="/GeneralSurgeon"><button class="btn btn-primary mx-4">General Surgeon</button></a>
+      <a href="/ENTSpecialist"><button class="btn btn-primary mx-4">ENT Specialist</button></a>
+      <a href="/Orthopaedist"><button class="btn btn-primary mx-4">Orthopaedist</button></a>
     </div>
 
     <div>
@@ -40,16 +41,16 @@
       <div class="card-body light-bg-color">
         <div>
           <p>Name: <%= user.profiled.name %> <br>
-            Qualification: <%= user.profiled.profession %> <br>
-            Experience: 6 years 
+            Profession: <%= user.profiled.profession %> <br>
+            Experience: 6 years
           </p>
-          
+
         </div>
         <div>
           <img class="img-fluid light-bg-color" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
         </div>
-        
-  
+
+
         <form action="/bookAppointment-sender" method="post">
           <button type="submit" class="btn btn-primary sub-title mt-5 mb-4" name="docid" value=<%=user._id%>  >Book Appointment </button>
         </form>

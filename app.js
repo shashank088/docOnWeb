@@ -56,12 +56,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const db_link = 'mongodb+srv://Shubham:kQJN89TBsVK769a@cluster0.rfffe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-mongoose.connect(db_link,
-  { useNewUrlParser: true, useUnifiedTopology: true }, err => {
-    console.log('connected');
-  });
+// const db_link = 'mongodb+srv://Shubham:kQJN89TBsVK769a@cluster0.rfffe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+// mongoose.connect(db_link,
+//   { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+//     console.log('connected');
+//   });
 // mongoose.set("useCreateIndex", true);
+mongoose.connect("mongodb://localhost:27017/userDBmedicare", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // plugins
 userSchema.plugin(passportLocalMongoose);
@@ -213,18 +217,18 @@ app.get("/viewNotes",function(req,res){
 
 app.post('/viewDocsDownload', function(req,res){
  const pat_id = req.body.pat_id;
-  const doc_id = req.body.doc_id; 
+  const doc_id = req.body.doc_id;
   const document_id = req.body.documentId
   console.log(document_id,doc_id,pat_id);
   // console.log(req.body);
-     User.findById({_id:doc_id},function(err,data){  
+     User.findById({_id:doc_id},function(err,data){
         var dcmnt = data.profiled.appointments.find(o=>o.patient_id==pat_id).docs
         .find(d=>d._id==document_id) ;
          // var buff = Buffer.from(dcmnt.documents).toString('base64')
             fs.writeFileSync('some.pdf',dcmnt.documents.data);
-            res.download('some.pdf');   
-     })  
-}) 
+            res.download('some.pdf');
+     })
+})
 
 // keep this buddy at last
 app.get("/:profession", function(req, res) {
@@ -374,23 +378,27 @@ app.post("/bookAppointment", function(req, res) {
           console.log(req.body.docid); console.log("called book appointment");
           User.findById(req.body.docid,function(err,foundDoctor){
 
-             
+
               const doctorAppointment = ({
                 patient_id: foundUser._id,
                 patient_name: foundUser.profilep.name,
                 visit_type: req.body.selectone,
-                symptoms: req.body.symptoms
+                symptoms: req.body.symptoms,
+                time: req.body.appttime.toString(),
+                date: req.body.apptdate.toString()
               });
 
               foundDoctor.profiled.appointments.push(doctorAppointment);
               foundDoctor.save();
 
-           
+
               const patientAppointment = ({
               doctor_id: req.body.docid,
-              visit_type: req.selectone,
+              visit_type: req.body.selectone,
               doctor_name: foundDoctor.profiled.name,
-              doctor_profession: foundDoctor.profiled.profession
+              doctor_profession: foundDoctor.profiled.profession,
+              time: req.body.appttime.toString(),
+              date: req.body.apptdate.toString()
             });
               foundUser.profilep.appointments.push(patientAppointment);
               foundUser.save();
@@ -591,7 +599,7 @@ app.post('/viewDocsPatient', (req, res) => {
   const doc_id = req.body.doc_id;
   const pat_id = req.user._id;
   User.findById({_id:doc_id}, (err, data) => {
-    if (err) { 
+    if (err) {
       console.log(err);
       res.status(500).send('An error occurred', err);
     }
@@ -606,7 +614,7 @@ app.post('/viewDocsDoctor', (req, res) => {
   const pat_id = req.body.pat_id;
   const doc_id = req.user._id;
   User.findById({_id:doc_id}, (err, data) => {
-    if (err) { 
+    if (err) {
       console.log(err);
       res.status(500).send('An error occurred', err);
     }
@@ -652,7 +660,7 @@ app.post("/chatDoctor",function(req,res){
 })
 
 app.post("/chatPatient",function(req,res){
-  
+
   const pat_id = req.user._id;
   const doc_id = req.body.doc_id;
   res.render("chatPatient",{doc_id:doc_id,pat_id:pat_id});
@@ -687,5 +695,3 @@ app.post('/videoChat/:id',(req,res)=>{
   }
   res.sendStatus(200);
 })
-
-
