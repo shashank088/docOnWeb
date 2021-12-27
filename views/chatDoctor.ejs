@@ -15,7 +15,7 @@ const patient_id = "<%= pat_id%>"
     <script defer src="/client.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <div>
-      <h1 id="patient_id">Patient Name is : <%= pat_id %></h1>
+      <h1 id="patient_id">Patient's name is : <%= patient_name %></h1>
       <br><br><br><br>
     </div>
     <div class="container">
@@ -27,10 +27,10 @@ const patient_id = "<%= pat_id%>"
     <iframe name="votar" style="display:none;"></iframe>
         <form action="/chat/<%= pat_id%><%= doc_id %>" method="POST"  target="votar">
             <input type="text" name="messageInp" id="messageInp">
-            <button class="btn" type="submit">Send</button>
-        </form>
+            <button class="btn btn-success"type="submit">Send</button>
+        </form><br><br>
         <form action="/videoChat/<%= pat_id %><%= doc_id %>" method="POST"  target="votar">
-            <button class="btn" type="submit" name="button" value="call">VideoCall Patient</button>
+            <button class="btn  btn-success" type="submit" name="button" value="call">VideoCall Patient</button>
         </form>
         <div id="video-grid"></div>
     </div>

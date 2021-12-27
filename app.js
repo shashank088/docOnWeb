@@ -656,14 +656,19 @@ app.post('/viewDocsSave', (req, res)=>{
 app.post("/chatDoctor",function(req,res){
     const pat_id = req.body.pat_id;
     const doc_id = req.user._id;
-    res.render("chatDoctor",{doc_id:doc_id,pat_id:pat_id});
+    User.findById(pat_id, function(err, pat){
+      res.render("chatDoctor",{doc_id:doc_id,pat_id:pat_id, patient_name: pat.profilep.name});
+    });
+
 })
 
 app.post("/chatPatient",function(req,res){
 
   const pat_id = req.user._id;
   const doc_id = req.body.doc_id;
-  res.render("chatPatient",{doc_id:doc_id,pat_id:pat_id});
+  User.findById(doc_id, function(err, doc){
+  res.render("chatPatient",{doc_id:doc_id,pat_id:pat_id, doctor_name: doc.profiled.name});
+  });
 })
 
 

@@ -15,7 +15,7 @@
     <script defer src="/client.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <div>
-       <h1 id="patient_id">Doctor Name is : <%= doc_id %></h1>
+       <h1 id="patient_id">Doctor's name is : <%= doctor_name %></h1>
       <br><br><br><br>
     </div>
     <div class="container">
@@ -25,10 +25,10 @@
     <iframe name="votar" style="display:none;"></iframe>
         <form action="/chat/<%= doc_id %><%= pat_id %>" method="POST" target="votar">
             <input type="text" name="messageInp" id="messageInp">
-            <button class="btn" type="submit">Send</button>
-        </form>
+            <button class="btn btn-success" type="submit">Send</button>
+        </form><br><br>
         <form action="/videoChat/<%= doc_id%><%= pat_id %>" method="POST"  target="votar">
-            <button class="btn" name="button" value="call" type="submit">VideoCall doctor</button>
+            <button class="btn  btn-success" name="button" value="call" type="submit">VideoCall doctor</button>
         </form>
         <div id="video-grid"></div>
     </div>

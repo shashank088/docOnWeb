@@ -33,7 +33,7 @@ const myPeer = new Peer(undefined,{
 const videoGrid = document.getElementById('video-grid');
 var peerId="";
 myPeer.on('open',peer_id=>{
-    alert('connected'+peer_id);
+    // alert('connected'+peer_id);
     peerId = peer_id
 })
 
@@ -70,7 +70,7 @@ socket.on('call',(data)=>{
             const button = "answer"
             axios.post(`/videoChat/${myId}`, {button,myId,peerId},{headers:{'Content-Type':'application/json'}}
                 ).then((response) => {
-                   
+
                 },(error)=>{
                     console.log(error);
                 });
@@ -88,7 +88,7 @@ socket.on('callProgress',data=>{
             const button = "sendPeerId"
             axios.post(`/videoChat/${myId}`, {button,myId,peerId},{headers:{'Content-Type':'application/json'}}
                 ).then((response) => {
-                   
+
                 },(error)=>{
                     console.log(error);
                 });
