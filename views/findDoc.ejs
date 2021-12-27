@@ -1,0 +1,63 @@
+<%- include("header2") -%>
+
+
+<section class="footer-spacing">
+  <div class="container">
+    <div class="mt-5 mb-3">
+      <button class="btn btn-primary mx-4">Neurologist</button>
+      <button class="btn btn-primary mx-4">Cardiologist</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+    </div>
+    <div class="mt-5 mb-4">
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+      <button class="btn btn-primary mx-4">VOID</button>
+    </div>
+
+    <div>
+      <form class="" action="/search" method="post">
+        <input type="text" name="profession" placeholder="Type Here to Search">
+        <button type="submit" name="button" class="btn btn-primary mx-3 my-3">Search</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- <div class="container"> -->
+  <div class="container mb-5">
+    <div class="box" id="heading">
+      <h1>Search Results</h1>
+    </div>
+  </div>
+
+  <% doctorArray.forEach(function(user){ %>
+    <div class="card rounded box">
+      <div class="card-body light-bg-color">
+        <div>
+          <p>Name: <%= user.profiled.name %> <br>
+            Qualification: <%= user.profiled.profession %> <br>
+            Experience: 6 years 
+          </p>
+          
+        </div>
+        <div>
+          <img class="img-fluid light-bg-color" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+        </div>
+        
+  
+        <form action="/bookAppointment-sender" method="post">
+          <button type="submit" class="btn btn-primary sub-title mt-5 mb-4" name="docid" value=<%=user._id%>  >Book Appointment </button>
+        </form>
+      </div>
+    </div>
+    <% }) %>
+
+</section>
+
+
+<%- include("footer") -%>

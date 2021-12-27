@@ -1,0 +1,69 @@
+
+
+<!-- Header part -->
+<%- include("header2") -%>
+
+
+
+
+<script>
+  const patient_id = <%= pat._id%> 
+  const doctor_id = <%= doc._id %>
+</script>
+  <!-- middle wrapper start -->
+
+  <div class="container">
+    <div class="box" id="heading">
+      <h1>Appointments Details</h1>
+    </div>
+  </div>
+
+<div class="card rounded box">
+
+    <div class="card-body">
+        <div class="left-alignment sub-title">
+            <p>Doctor Name: <%= doc.profiled.name %> <br> <br>
+               Time Slot: 18:30 <br> <br>
+               Date: dd/mm/yyyy<br> <br>
+               Mode: <%= appointment.visit_type %> <br> <br>
+               Symptoms: <%= appointment.symptoms %> <br> <br>
+               Documents Uploaded: kiye hai kuchh <br> <br>
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- documents view and upload --> 
+
+
+<form class="" action="/viewDocsPatient" method="post">
+    <button class="btn btn-success" type="submit" name="doc_id" value=<%= doc._id%> >View and upload Reports</button>
+</form>
+<br><br>
+
+<!-- Text and video chat -->
+
+
+<form class="" action="/chatPatient" method="post">
+    <button class="btn btn-success" type="submit" name="doc_id" value=<%=doc._id%> >Text or Video Chat</button>
+</form>
+<br><br>
+
+
+
+
+
+      <!-- middle wrapper end -->
+
+
+
+
+
+<!-- Footer part -->
+<%- include("footer") -%>

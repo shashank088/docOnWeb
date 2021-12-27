@@ -1,0 +1,113 @@
+<%- include('header') %>
+
+<!-- Create Profile-->
+
+<div class="create-profile ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <a href="signup-choice.html" class=" btn btn-primary">Go Back</a>
+        <h1 class="display-4 text-center">Enter Your Details</h1>
+        <p class="lead text-center">Let's get some information to make your profile stand out</p>
+        <small class="d-block pb-3">
+          <h5>* = required field</h5>
+        </small>
+        <form action="/patientDetails" method="POST">
+
+          <div class="form-group">
+            <small class="form-text text-muted">Your Name *</small>
+            <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="name"
+              required />
+          </div>
+<!-- phone Number -->
+           <div class="form-group">
+            <small class="form-text text-muted">Your phone No *</small>
+            <input type="text" class="form-control form-control-lg" placeholder="Your Phone Number" name="phoneNo"
+              required />
+          </div>
+
+<!--medical history -->
+          <div class="form-group">
+            <small class="form-text text-muted">your medical history</small>
+            <textarea class="form-control form-control-lg" placeholder="Write your medical history" name="medicalHistory"
+              rows="3"></textarea>
+          </div>
+<!--vital -->
+          <div class="form-group">
+            <small class="form-text text-muted">your vitals </small>
+            <textarea class="form-control form-control-lg" placeholder="Write your vitals (BP,sugar levels) " name="vitals"
+              rows="3"></textarea>
+          </div>
+
+
+
+          <!-- <div class="form-group">
+            <small class="form-text text-muted">Year of Establishment *</small>
+            <input type="number" class="form-control form-control-lg" placeholder="Year of Establishment"
+              name="year_of_establishment" required />
+          </div>
+
+          <div class="form-group">
+            <small class="form-text text-muted">Company Website *</small>
+            <input type="text" class="form-control form-control-lg" placeholder="Website URL" name="company_website" />
+          </div>
+
+          <div class="form-group">
+            <small class="form-text text-muted">Head Office Address *</small>
+            <input type="text" class="form-control form-control-lg" placeholder="Company Address" name="company_address"
+              required />
+          </div>
+
+
+          <div class="mb-3" style="padding-top : 6%">
+            <h3>Attach the Following Documents</h3>
+          </div>
+
+          <div class="form-group">
+            <span class="form-text text-muted">Company Incorporation Certificate *</span>
+            <label for="myfile">Select Company Incorporation Certificate :</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+          </div>
+
+          <div class="form-group">
+            <span class="form-text text-muted">Memorandum of Association *</span>
+            <label for="myfile">Select M o A :</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+          </div>
+
+          <div class="form-group">
+            <span class="form-text text-muted">Articles of Association *</span>
+            <label for="myfile">Select A o A:</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+          </div>
+
+          <div class="form-group">
+            <span class="form-text text-muted">Digital Signature Certificates *</span>
+            <label for="myfile">Select DSC:</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+          </div>
+
+          <div class="form-group">
+            <span class="form-text text-muted"> Director Identification Number *</span>
+            <label for="myfile">Select DIN :</label>
+            <input type="file" id="myfile" name="myfile"><br><br>
+          </div> -->
+
+
+          <button type="submit" name="button" class="btn btn-primary btn-block mt-4">Submit</button>
+          <!-- <input type="submit" class="btn btn-primary btn-block mt-4" /> -->
+          <br><br>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Footer part -->
+
+  <%- include('footer') %>

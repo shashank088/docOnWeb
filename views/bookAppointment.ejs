@@ -1,0 +1,67 @@
+<!-- Header part -->
+<%- include("header2") -%>
+
+
+
+<!-- middle wrapper start -->
+
+<section class="footer-spacing">
+
+  <div class="card rounded box details-box">
+
+    <div class="card-body light-bg-color">
+      <form action="/bookAppointment" method="post">
+  
+        <div class="left-alignment sub-title">
+          <h2>Doctor name : <%=doctor.profiled.name%></h2>
+          <hr>
+          <h2>Doctor's Specialization : <%=doctor.profiled.profession%></h2>
+          <hr>
+          <h2>Doctor's ID : <%=doctor._id%></h2>
+          <hr>
+        </div>
+  
+        <div class="left-alignment sub-title">
+  
+          <label for="">Enter Time:</label>
+          <input type="time" >
+          <br>
+          <hr>
+  
+          <label for="">Enter Date:</label>
+          <input type="date" >
+          <br>
+          <hr>
+          <label for="">Mode:</label>
+          <br>
+          <input type="radio" name="selectone" style="box-shadow: none;"> Online <br>
+          <input type="radio" name="selectone" style="box-shadow: none;"> Offline
+          <br>
+          <hr>
+  
+          <label for="">Upload Documents:</label>
+          <input type="file" id="myFile" name="filename" style="box-shadow: none;" >
+          <br>
+          <hr>
+          <label for="">Tell Your Symptoms:</label>
+          <textarea name="" id="" cols="30" rows="3" ></textarea>
+  
+        </div>
+        <div class="my-5 sub-title">
+          <button type="submit" name="docid" class="btn btn-primary" value=<%=doctor._id%>>Confirm Book Appointment </button>
+        </div>
+      </form>
+  
+    </div>
+  
+  </div>
+  
+</section>
+
+
+<!-- middle wrapper end -->
+
+
+
+<!-- Footer part -->
+<%- include("footer") -%>

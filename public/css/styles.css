@@ -1,0 +1,215 @@
+body {
+  font-family: "Montserrat";
+  text-align: center;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("../photos/bgImg.jpeg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+img{
+  border-radius: 5%;
+}
+
+/* class for Navbar */
+.color{
+  background-color: #209CEE;
+}
+.title{
+  font-size: 2rem;
+}
+.sub-title {
+  font-size: 1.5em;
+}
+
+
+.title-intro {
+  position: relative;
+  top: 15%;
+  left: 5%;
+  width: 40%;
+}
+.nav-options {
+  background-color: #0C3D5C;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+/*class for findDoc and dashboard-doctor  */
+
+
+.light-bg-color {
+  background-color: #e8f5fd;
+  box-shadow: 3px 3px 10px grey;
+}
+
+input, button, textarea, .bg-shadow, #heading{
+  box-shadow: 3px 3px 10px grey;
+}
+
+.box {
+  max-width: 50%;
+  margin: 30px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+  background-color: #209CEE;
+  text-align: center;
+  max-width: 400px;
+  margin-top: 30px;
+}
+
+/* class for left-alignment */
+.left-alignment {
+  text-align: left;
+}
+
+
+/* class for main page content */
+#first{
+  position: relative;
+  background-image: url(../photos/7.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  height: 40vw;
+}
+
+
+.first-page-main-title{
+  font-size: 6.5vw;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+.first-page-main-content{
+  font-size: 2vw;
+  text-align: left;
+  font-family: "Montserrat-Light";
+}
+
+
+/* class for footer section */
+.quick-links{
+  color: #fff;
+  font-size: 2rem;
+  margin: 20px 15px;
+}
+
+.social-icon {
+  color: #FFF;
+  margin: 20px 15px;
+  font-size: 2rem;
+}
+
+.social-icon:hover {
+  color: #150485;
+}
+
+.container-fluid {
+  padding: 1.5% 15%;
+}
+.footer{
+  background-color: #209CEE;
+  position: relative;
+}
+
+.copyright{
+  color: #FFF;
+}
+
+
+/* For Login Page */
+
+.login-signup{
+  position: relative;
+  top: 150px;
+}
+
+.for-login-signup{
+  position: relative;
+  top: 300px;
+}
+
+
+
+
+.login-page-title{
+  padding: 15px;
+}
+
+.google-button{
+  color: #fff;
+  background-color: #dd4b39;
+}
+
+.facebook-button{
+  color: #fff;
+  background-color: #3b5998;
+}
+
+
+
+.job-listing{
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  left: 10%;
+  text-align: left;
+}
+
+.search{
+  padding-top: 10px;
+}
+
+/* EDIT DEVELOPER PROFILE */
+.edit-developer-profile{
+  margin-top: 20px;
+}
+
+.heads_edit{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+
+/* POST A JOB */
+
+.left-col-jobpost{
+  text-align: left;
+}
+
+
+/* doctor details */
+
+.details-box{
+  position: relative;
+  top: 80px;
+}
+
+section.footer-spacing, .footer-spacing {
+  margin-bottom: 200px;
+}
+
+
+hr {
+  border: dotted 6px;
+  border-color: lightgrey;
+  width: 4%;
+  border-bottom: none;
+  margin: 25px auto;
+}

@@ -1,0 +1,45 @@
+<!-- Header part -->
+<%- include("header2") -%>
+
+  <script>
+  const patient_id = "<%= pat_id%>" 
+  const doctor_id = "<%= doc_id %>"
+</script>
+    <h2>Upload Files</h2>  
+       <form action="/viewDocsSave" method="POST" enctype="multipart/form-data">  
+        <input type="file" name="doc"><br> 
+        <input type="hidden"  name="pat_id" value= "<%= pat_id%>" >
+        <input type="hidden"  name="doc_id" value= "<%= doc_id%>" >
+        <input type="submit" value="Upload">  
+       </form><br><br><br><br>  
+   <h2>Download Files</h2>  
+       <table>  
+           <thead>  
+               <tr>  
+                   <td>  
+                       image  
+                   </td>  
+                   <td>  
+                       download  
+                   </td>  
+               </tr>  
+           </thead>  
+           <tbody>  
+               <% for(var i=0; i < data.length > 0; i++) {%>  
+                <tr>  
+                    <td><img src="<%= data[i].documents.Buffer %>" style="width:100px; height:100px;"></td>  
+                    <td>  
+                        <form action="/viewDocsDownload" method="POST" enctype="multipart/form-data"> 
+                        <input type="hidden"  name="pat_id" value= "<%= pat_id%>" >
+        <input type="hidden"  name="doc_id" value= "<%= doc_id%>" > 
+                          <input type="hidden"  name="documentId" value= "<%=data[i]._id%>">
+                         <input type="submit"value="Download">  
+                       </form>  
+                    </td>  
+                </tr>  
+               <% } %>  
+           </tbody>  
+       </table>  
+
+
+<%- include("footer") -%>

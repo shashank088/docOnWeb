@@ -1,0 +1,198 @@
+<!-- Header part -->
+<%- include("header2") -%>
+
+
+
+
+<script>
+  const patient_id = <%= pat._id%> 
+  const doctor_id = <%= doc._id %>
+</script>
+
+
+<div class="container">
+  <div class="box" id="heading">
+    <h1>Details of <%=appointment.patient_name%> </h1>
+  </div>
+</div>
+
+<!-- middle wrapper start -->
+<div class="card rounded box">
+  <div class="card-body">
+    <div class="left-alignment sub-title">
+      <p>Patient Name: <%=appointment.patient_name%> <br> <br>
+        Patient Time Slot: 18:30 <br> <br>
+        Date: dd/mm/yyyy<br> <br>
+        Mode: <%=appointment.visit_type%> <br> <br>
+        Symptoms: <%=appointment.symptoms%> <br> <br>
+        Documents Uploaded: kiye hai kuchh <br> <br></p>
+
+        <form class="" action="/readMoreDoctor/submitNotes" method="post">
+          <label for="">Write Notes:</label>
+          <input type="text" name="notesContent">
+          <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >Submit Notes</button>
+        </form>
+        <br>
+        <form class="" action="/readMoreDoctor/viewNotes" method="post">
+          <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >View Notes</button>
+        </form><br>
+
+    </div>
+  </div>
+</div>
+
+<!-- BP READING -->
+<div class="card rounded box">
+  <div class="card-body">
+    <div class="bookapp sub-title">
+      <form class="" action="/vitals-bp" method="post">
+        <label for="bpdate">Choose date for BP:&nbsp&nbsp&nbsp</label>
+        <input type="date" name="bpdate" ><br>
+        <label for="bpdate">Write reading for BP:&nbsp</label>
+        <input type="text" name="bpreading" placeholder="Reading"><br>
+        <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >Submit BP reading</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- SUGAR READING -->
+<div class="card rounded box">
+  <div class="card-body">
+    <div class="bookapp sub-title">
+      <form class="" action="/vitals-sugar" method="post">
+        <label for="sugardate">Choose date for sugar:&nbsp&nbsp&nbsp</label>
+        <input type="date" name="sugardate" ><br>
+        <label for="sugarpdate">Write reading for sugar:&nbsp</label>
+        <input type="text" name="sugarreading" placeholder="Reading"><br>
+        <button class="btn btn-success" type="submit" name="patid" value=<%=appointment.patient_id%> >Submit sugar reading</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- documents view and upload --> 
+
+
+<form class="" action="/viewDocsDoctor" method="post">
+    <button class="btn btn-success" type="submit" name="pat_id" value=<%= pat._id%>%>>View and upload Reports</button>
+</form>
+<br><br>
+
+<!-- Text Chat and video chat -->
+
+
+<form class="" action="/chatDoctor" method="post">
+    <button class="btn btn-success" type="submit" name="pat_id" value=<%=pat._id%> >Text or Video Chat</button>
+</form>
+<br><br>
+
+
+
+<!-- Graph -->
+<div  id="gd"></div>
+
+
+<!-- script for graph -->
+<script>
+  d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv", function(err, rows){
+    function unpack(rows, key) {
+    return rows.map(function(row) { return row[key]; });
+  }
+
+
+// for bp
+  var xbp=['2021-08-04', '2021-09-04', '2021-10-04', '2021-11-04'];
+  var ybp=[110, 120, 101, 135];
+  var typee= "scatter";
+
+  <% pat.profilep.vitals.bp.forEach(function(value){ %>
+    xbp.push("<%=value.date%>");
+  <%  }) %>
+  <%  pat.profilep.vitals.bp.forEach(function(value){ %>
+    ybp.push("<%=value.reading%>");
+  <%  }) %>
+
+// for sugar
+
+var xsugar=['2021-08-05', '2021-09-05', '2021-10-05', '2021-11-05'];
+var ysugar=[70, 75, 65, 80];
+
+<% pat.profilep.vitals.sugar.forEach(function(value){ %>
+  xsugar.push("<%=value.date%>");
+<%  }) %>
+<%  pat.profilep.vitals.sugar.forEach(function(value){ %>
+  ysugar.push("<%=value.reading%>");
+<%  }) %>
+
+
+
+var trace1 = {
+    type: "scatter",
+    // mode: "lines",
+    name: 'BP',
+    x: xbp,
+    y: ybp,
+    line: {color: '#17BECF'}
+  }
+
+  var trace2 = {
+    type: "scatter",
+    // mode: "lines",
+    name: 'Blood Sugar',
+    x: xsugar,
+    y: ysugar,
+    line: {color: '#7F7F7F'}
+  }
+
+
+
+  var datanew = [trace1, trace2];
+
+  //var data = [trace1,trace2];
+
+  var layout = {
+    title: 'Vitals Graph of Patient',
+    xaxis: {
+      autorange: true,
+      range: ['2020-02-17', '2023-02-16'],
+      rangeselector: {buttons: [
+          {
+            count: 1,
+            label: '1m',
+            step: 'month',
+            stepmode: 'backward'
+          },
+          {
+            count: 6,
+            label: '6m',
+            step: 'month',
+            stepmode: 'backward'
+          },
+          {step: 'all'}
+        ]},
+      rangeslider: {range: ['2020-02-17', '2023-02-16']},
+      type: 'date'
+    },
+    yaxis: {
+      autorange: true,
+      range: [86.8700008333, 138.870004167],
+      type: 'linear'
+    }
+  };
+
+  Plotly.newPlot('gd', datanew, layout);
+  })
+</script>
+
+<!-- middle wrapper end -->
+
+
+
+
+
+<!-- Footer part -->
+<%- include("footer") -%>
