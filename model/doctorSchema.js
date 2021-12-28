@@ -24,9 +24,7 @@ const doctorSchema = new mongoose.Schema({
   name: String,
   profession: String,
   qualification: String,
-  experience: Number,
-  min_time: Number,
-  max_time: Number,
+  experience: String,
   appointments: [doctorAppointment],
   rating: Number,
   numberOfPeopleRated: Number

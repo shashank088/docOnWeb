@@ -56,12 +56,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// for global connection
 // const db_link = 'mongodb+srv://Shubham:kQJN89TBsVK769a@cluster0.rfffe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 // mongoose.connect(db_link,
 //   { useNewUrlParser: true, useUnifiedTopology: true }, err => {
 //     console.log('connected');
 //   });
-// mongoose.set("useCreateIndex", true);
+
+// for local connection
 mongoose.connect("mongodb://localhost:27017/userDBmedicare", {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -314,7 +316,8 @@ app.post("/doctorDetails", function(req, res) {
         const newProfiled = ({
           name: name,
           profession: profession,
-          phone : req.body.phoneNo
+          qualification: req.body.qualification,
+          experience: req.body.experience
         });
         foundUser.profiled = newProfiled;
         foundUser.save(function() {
@@ -339,7 +342,7 @@ app.post("/patientDetails", function(req, res) {
         console.log(foundUser._id, id);
         const newProfilep = ({
 		vitals:{},
-          	name: name,
+          	   name: name,
                 phone : req.body.phoneNo
         });
         foundUser.profilep = newProfilep;
