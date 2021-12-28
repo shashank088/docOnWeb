@@ -5,24 +5,24 @@
   const patient_id = "<%= pat_id%>"
   const doctor_id = "<%= doc_id %>"
 </script>
-<div class="container">
+<div class="container my-5">
 <div class="box" id="heading">
 <h1>Upload Files </h1>
 </div>
 </div>
     <div class="card rounded box">
-      <div class="card-body">
-        <div class="bookapp sub-title">
+      <div class="card-body light-bg-color">
+        <div class="sub-title">
        <form action="/viewDocsSave" method="POST" enctype="multipart/form-data">
-        <input type="file" class="btn btn-success" name="doc"><br>
+        <input type="file" class="btn btn-success my-3" name="doc"><br>
         <input type="hidden"  name="pat_id" value= "<%= pat_id%>" >
         <input type="hidden"  name="doc_id" value= "<%= doc_id%>" ><br>
-        <input type="submit" class="btn btn-success" value="Upload">
+        <input type="submit" class="btn btn-success my-3" value="Upload">
        </form>
      </div>
    </div>
  </div>
- <div class="container">
+ <div class="container my-5">
  <div class="box" id="heading">
  <h1>Download Files </h1>
  </div>
@@ -30,14 +30,14 @@
 
                <% for(var i=0; i < data.length > 0; i++) {%>
                  <div class="card rounded box">
-                   <div class="card-body">
-                     <div class="bookapp sub-title">
+                   <div class="card-body light-bg-color">
+                     <div class="sub-title">
                        <h4>Test Report <%= i+1 %> </h4>
                         <form action="/viewDocsDownload" method="POST" enctype="multipart/form-data">
                         <input type="hidden"  name="pat_id" value= "<%= pat_id%>" >
                           <input type="hidden"  name="doc_id" value= "<%= doc_id%>" >
                           <input type="hidden"  name="documentId" value= "<%=data[i]._id%>" >
-                         <input type="submit" class="btn btn-primary" value="Download">
+                         <input type="submit" class="btn btn-primary my-3" value="Download">
                        </form>
                      </div>
                    </div>

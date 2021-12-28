@@ -4,6 +4,19 @@ body {
   margin: 0;
 }
 
+hr {
+  border: dotted 6px;
+  border-color: lightgrey;
+  width: 4%;
+  border-bottom: none;
+  margin: 25px auto;
+}
+
+img{
+  border-radius: 5%;
+}
+
+/* class for backgroung image */
 .bg {
   /* The image used */
   background-image: url("../photos/bgImg.jpeg");
@@ -17,10 +30,6 @@ body {
   background-size: cover;
 }
 
-img{
-  border-radius: 5%;
-}
-
 /* class for Navbar */
 .color{
   background-color: #209CEE;
@@ -31,7 +40,6 @@ img{
 .sub-title {
   font-size: 1.5em;
 }
-
 
 .title-intro {
   position: relative;
@@ -45,8 +53,8 @@ img{
   border-radius: 4px;
 }
 
-/*class for findDoc and dashboard-doctor  */
 
+/*class to give shadow and backgroud color  */
 
 .light-bg-color {
   background-color: #e8f5fd;
@@ -56,6 +64,8 @@ img{
 input, button, textarea, .bg-shadow, #heading{
   box-shadow: 3px 3px 10px grey;
 }
+
+
 
 .box {
   max-width: 50%;
@@ -71,6 +81,7 @@ input, button, textarea, .bg-shadow, #heading{
   max-width: 400px;
   margin-top: 30px;
 }
+
 
 /* class for left-alignment */
 .left-alignment {
@@ -100,6 +111,7 @@ input, button, textarea, .bg-shadow, #heading{
   text-align: left;
   font-family: "Montserrat-Light";
 }
+
 
 
 /* class for footer section */
@@ -132,7 +144,7 @@ input, button, textarea, .bg-shadow, #heading{
 }
 
 
-/* For Login Page */
+/* For Login Signup Page */
 
 .login-signup{
   position: relative;
@@ -143,9 +155,6 @@ input, button, textarea, .bg-shadow, #heading{
   position: relative;
   top: 300px;
 }
-
-
-
 
 .login-page-title{
   padding: 15px;
@@ -162,39 +171,7 @@ input, button, textarea, .bg-shadow, #heading{
 }
 
 
-
-.job-listing{
-  position: relative;
-  padding: 10px;
-  margin: 10px;
-  width: 80%;
-  left: 10%;
-  text-align: left;
-}
-
-.search{
-  padding-top: 10px;
-}
-
-/* EDIT DEVELOPER PROFILE */
-.edit-developer-profile{
-  margin-top: 20px;
-}
-
-.heads_edit{
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-
-
-/* POST A JOB */
-
-.left-col-jobpost{
-  text-align: left;
-}
-
-
-/* doctor details */
+/* class to give spacing on top and bottom */
 
 .details-box{
   position: relative;
@@ -206,10 +183,3 @@ section.footer-spacing, .footer-spacing {
 }
 
 
-hr {
-  border: dotted 6px;
-  border-color: lightgrey;
-  width: 4%;
-  border-bottom: none;
-  margin: 25px auto;
-}
