@@ -1,4 +1,7 @@
 <h1 align="center">docOnWeb</h1>
+<p align="center">
+<img alt="Logo" width="142px" src="public/photos/favicon2.png"/>
+</p>
 <p align="center"> Avishkar 2021 project based on Medicare problem statement. </p>
 
 <br>
